@@ -1,0 +1,62 @@
+# --- OS / editor junk ---
+*~
+\#*\#
+.\#*
+.DS_Store
+Thumbs.db
+
+# --- Auto-save / backups (if you keep them inside .emacs.d) ---
+auto-save-list/
+tramp/
+recentf
+history
+places
+savehist
+bookmarks
+
+# --- Native compilation cache (Emacs 28+) ---
+eln-cache/
+**/*.eln
+
+# --- Byte-compiled elisp ---
+**/*.elc
+
+# --- URL / network cache ---
+url/
+network-security.data
+request/
+
+# --- Package managers / caches ---
+# ELPA packages (often large; either ignore or commit, pick one strategy)
+elpa/
+# If you use package-quickstart
+package-quickstart.el
+
+# Straight.el (if you use it)
+straight/
+# Doom (if you use it)
+.cache/
+local/
+
+# --- Completion/DB caches (common packages) ---
+eshell/history
+eshell/lastdir
+transient/
+var/
+eln/
+
+# --- LSP / project tools (common) ---
+.eglot-cache/
+.lsp-session-v1
+dap-breakpoints
+.projectile
+projectile-bookmarks.eld
+
+# --- Org / notes generated ---
+org-roam.db
+org-id-locations
+.org-id-locations
+
+# --- Custom file backups ---
+custom.el~
+custom.el.#*
