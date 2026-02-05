@@ -13,6 +13,7 @@
 (line-number-mode 1)
 (blink-cursor-mode -1)
 (global-display-line-numbers-mode 1)
+(global-hl-line-mode 1)
 ;; ;; do not show line number in mode below
 (dolist (mode '(term-mode-hook
                 eshell-mode-hook
