@@ -1,5 +1,8 @@
 ;; My Keybinding
 
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c u") #'eval-buffer)))
 ;; ==== Visual Selecting ====
 (global-set-key (kbd "M-v") #'set-mark-command)
 (defun my/visual-line ()

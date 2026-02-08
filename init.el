@@ -46,6 +46,9 @@
 (require 'packages)
 (require 'keybind)
 (require 'tab)
+(require 'treesit-setup)
+(require 'treesit-modes)
+(require 'vterm-setup)
 
 ;; === Theme ===
 (use-package vscode-dark-plus-theme
