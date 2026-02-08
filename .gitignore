@@ -60,3 +60,5 @@ org-id-locations
 # --- Custom file backups ---
 custom.el~
 custom.el.#*
+
+tree-sitter/
