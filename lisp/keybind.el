@@ -3,6 +3,7 @@
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (local-set-key (kbd "C-c u") #'eval-buffer)))
+
 ;; ==== Visual Selecting ====
 (global-set-key (kbd "M-v") #'set-mark-command)
 (defun my/visual-line ()
@@ -65,36 +66,33 @@ If region active: expand selection to whole lines, regardless of direction."
 (global-set-key (kbd "M-q") #'kill-buffer-and-window)
 
 ;; ==== Cycle Buffer ====
+(require 'seq)
+
 (defun my/buffer-file-p (buf)
-  "Non-nil if BUF is visiting a file."
   (buffer-file-name buf))
-(defun my/cycle-buffer (pred step)
-  "Cycle buffers in (buffer-list) by STEP (+1 or -1) filtering by PRED."
-  (let* ((bufs (buffer-list))
-         (cur  (current-buffer))
-         (n    (length bufs))
-         (i0   0)
-         (i    0)
-         (k    0)
-         found)
-    ;; find current buffer index
-    (while (and (< i0 n) (not (eq (nth i0 bufs) cur)))
-      (setq i0 (1+ i0)))
-    (setq i (if (< i0 n) i0 0))
 
-    ;; search next matching buffer, at most n steps
-    (setq k 0)
-    (while (and (< k n) (not found))
-      (setq i (mod (+ i step) n))
-      (let ((b (nth i bufs)))
-        (when (funcall pred b)
-          (setq found b)))
-      (setq k (1+ k)))
+(defun my/file-buffers-sorted ()
+  "Stable file buffer list sorted by file path."
+  (sort
+   (seq-filter #'my/buffer-file-p (buffer-list))
+   (lambda (a b)
+     (string-lessp (buffer-file-name a) (buffer-file-name b)))))
 
-    (when (buffer-live-p found)
-      (switch-to-buffer found))))
-(defun my/next-file-buffer () (interactive) (my/cycle-buffer #'my/buffer-file-p  1))
-(defun my/prev-file-buffer () (interactive) (my/cycle-buffer #'my/buffer-file-p -1))
+(defun my/cycle-file-buffer-fixed (step)
+  "Cycle file buffers in a stable order (sorted by file path)."
+  (let* ((bufs (my/file-buffers-sorted))
+         (n    (length bufs)))
+    (cond
+     ((<= n 1) (message "No other file buffers"))
+     (t
+      (let* ((cur (current-buffer))
+             (i0  (or (seq-position bufs cur) 0))
+             (i   (mod (+ i0 step) n)))
+        (switch-to-buffer (nth i bufs)))))))
+
+(defun my/next-file-buffer () (interactive) (my/cycle-file-buffer-fixed  1))
+(defun my/prev-file-buffer () (interactive) (my/cycle-file-buffer-fixed -1))
+
 (global-set-key (kbd "M-]") #'my/next-file-buffer)
 (global-set-key (kbd "M-[") #'my/prev-file-buffer)
 

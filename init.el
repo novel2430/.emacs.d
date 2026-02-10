@@ -32,11 +32,9 @@
 (set-frame-parameter nil 'alpha-background 85)
 (add-to-list 'default-frame-alist '(alpha-background . 85))
 
-
-;; Minibuffer completion UI: like a built-in picker
-(icomplete-mode 1)
-(fido-mode 1)          ;; fuzzy-ish matching for many commands (incl. C-x b)
-(fido-vertical-mode 1) 
+;; ==== TAB ====
+(setq-default tab-width 4)
+(setq-default standard-indent 4)
 
 ;; Cursor Type
 (setq-default cursor-type '(bar . 3))
@@ -45,13 +43,21 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'packages)
 (require 'keybind)
-(require 'tab)
+(require 'consult-setup)
+(require 'completion-setup)
 (require 'treesit-setup)
 (require 'treesit-modes)
 (require 'vterm-setup)
+(require 'lsp-core)
+(require 'lsp-servers)
+(require 'lsp-modes)
+(require 'lsp-completion)
+(require 'fringe-setup)
 
 ;; === Theme ===
 (use-package vscode-dark-plus-theme
   :ensure t
   :config
   (load-theme 'vscode-dark-plus t))
+
+(require 'workspace)
