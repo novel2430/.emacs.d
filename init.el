@@ -3,6 +3,12 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+;; ==== No Backup ====
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+
+(save-place-mode 1)
+
 ;; ==== Set UI ====
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -59,5 +65,8 @@
   :ensure t
   :config
   (load-theme 'vscode-dark-plus t))
+(set-face-attribute 'mode-line nil :weight 'bold)
+(set-face-attribute 'mode-line-inactive nil
+                    :background "gray30")  ;; 想更亮就 gray40/gray50
 
 (require 'workspace)
