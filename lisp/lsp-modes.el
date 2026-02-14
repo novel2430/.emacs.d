@@ -20,6 +20,19 @@
 ;; Python
 (add-hook 'python-mode-hook #'my/eglot-ensure)
 (add-hook 'python-ts-mode-hook #'my/eglot-ensure)
+;; Lua
+(add-hook 'lua-ts-mode-hook #'my/eglot-ensure)
+;; C/C++
+(add-hook 'c-ts-mode-hook #'my/eglot-ensure)
+(add-hook 'c++-ts-mode-hook #'my/eglot-ensure)
+;; Nix
+(add-hook 'nix-ts-mode-hook #'my/eglot-ensure)
+;; Vue
+(add-hook 'web-mode-hook #'my/eglot-ensure)
+;; Javascript, Typescript, Tsx
+(add-hook 'js-ts-mode-hook #'my/eglot-ensure)
+(add-hook 'typescript-ts-mode-hook #'my/eglot-ensure)
+(add-hook 'tsx-ts-mode-hook #'my/eglot-ensure)
 
 (provide 'lsp-modes)
 ;;; lsp-modes.el ends here

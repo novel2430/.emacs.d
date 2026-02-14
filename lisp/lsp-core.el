@@ -45,5 +45,12 @@
 (setq xref-show-xrefs-function #'consult-xref)
 (setq xref-show-definitions-function #'consult-xref)
 
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-ignored-server-capabilities :semanticTokensProvider)
+  (add-to-list 'eglot-ignored-server-capabilities :documentHighlightProvider)
+  (add-to-list 'eglot-ignored-server-capabilities :inlayHintProvider))
+
+(setq eglot-send-changes-idle-time 0.5)
+
 (provide 'lsp-core)
 ;;; lsp-core.el ends here

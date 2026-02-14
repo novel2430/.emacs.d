@@ -3,12 +3,12 @@
 ;; Vue
 (use-package web-mode
   :ensure t
-  :mode ("\\.vue\\'" . web-mode)
-  :config
+  :mode ("\\.vue\\'" . web-mode))
+;;  :config
   ;; 常见：缩进 2
-  (setq web-mode-markup-indent-offset 2
-        web-mode-code-indent-offset 2
-        web-mode-css-indent-offset 2))
+;;  (setq web-mode-markup-indent-offset 2
+;;        web-mode-code-indent-offset 2
+;;        web-mode-css-indent-offset 2))
 
 ;; HTML: prefer built-in html-ts-mode (Emacs 30.1+),
 ;; otherwise use vendored lisp/html-ts-mode.el, fallback to html-mode.
@@ -37,11 +37,38 @@
   (unless (fboundp 'nix-ts-mode)
     (with-eval-after-load 'nix-mode
       (add-to-list 'auto-mode-alist '("\\.nix\\'" . nix-mode)))))
-;; Optional fallback: if you don't want to rely on with-eval-after-load,
-;; just ensure nix-mode is installed too:
 (use-package nix-mode
   :ensure t
   :defer t)
+
+;; Lua
+(require 'lua-ts-mode nil t)
+(add-to-list 'auto-mode-alist '("\\.lua\\'" . lua-ts-mode))
+
+;; C / C++
+(when (and (fboundp 'treesit-language-available-p)
+           (treesit-language-available-p 'c)
+           (fboundp 'c-ts-mode))
+  (add-to-list 'major-mode-remap-alist
+               '(c-mode . c-ts-mode)))
+(when (and (fboundp 'treesit-language-available-p)
+           (treesit-language-available-p 'cpp)
+           (fboundp 'c++-ts-mode))
+  (add-to-list 'major-mode-remap-alist
+               '(c++-mode . c++-ts-mode)))
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c-ts-mode))
+(add-to-list 'auto-mode-alist '("\\.hpp\\'" . c++-ts-mode))
+
+;; Javascript, Jsx
+(when (fboundp 'js-ts-mode)
+  (add-to-list 'auto-mode-alist '("\\.m?js\\'" . js-ts-mode))
+  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js-ts-mode))
+  (add-to-list 'auto-mode-alist '("\\.cjs\\'" . js-ts-mode)))
+;; Typescript, Tsx
+(when (fboundp 'typescript-ts-mode)
+  (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode)))
+(when (fboundp 'tsx-ts-mode)
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode)))
 
 (provide 'treesit-modes)
 ;;; treesit-modes.el ends here

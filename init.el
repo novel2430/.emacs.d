@@ -25,12 +25,12 @@
 ;; ==== fonts ====
 (set-face-attribute 'default nil
                     :family "Hack Nerd Font"
-                    :height 160)
+                    :height 140)
 (setq-default line-spacing 0.12)
 
 ;; ==== Alpha ====
-(set-frame-parameter nil 'alpha-background 85)
-(add-to-list 'default-frame-alist '(alpha-background . 85))
+(set-frame-parameter nil 'alpha-background 95)
+(add-to-list 'default-frame-alist '(alpha-background . 95))
 
 ;; ==== TAB ====
 (setq-default tab-width 4)

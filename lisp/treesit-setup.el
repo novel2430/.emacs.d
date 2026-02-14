@@ -15,7 +15,9 @@
     cpp
     c-sharp
     css
-    html)
+    html
+	lua
+  )
   "Tree-sitter languages to auto-install if missing.")
 
 ;; 2) Where to fetch grammar sources for each language.
@@ -33,7 +35,8 @@
     (cpp        "https://github.com/tree-sitter/tree-sitter-cpp")
     (c-sharp    "https://github.com/tree-sitter/tree-sitter-c-sharp")
     (css        "https://github.com/tree-sitter/tree-sitter-css")
-    (html       "https://github.com/tree-sitter/tree-sitter-html"))
+    (html       "https://github.com/tree-sitter/tree-sitter-html")
+    (lua        "https://github.com/tree-sitter-grammars/tree-sitter-lua"))
   "Tree-sitter grammar sources. See `treesit-language-source-alist` for the schema.")
 
 ;;;; ===== Implementation =====
