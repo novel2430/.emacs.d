@@ -28,7 +28,7 @@
 ;; Nix
 (add-hook 'nix-ts-mode-hook #'my/eglot-ensure)
 ;; Vue
-(add-hook 'web-mode-hook #'my/eglot-ensure)
+(add-hook 'vue-ts-mode-hook #'my/eglot-ensure)
 ;; Javascript, Typescript, Tsx
 (add-hook 'js-ts-mode-hook #'my/eglot-ensure)
 (add-hook 'typescript-ts-mode-hook #'my/eglot-ensure)

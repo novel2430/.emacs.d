@@ -62,3 +62,4 @@ custom.el~
 custom.el.#*
 
 tree-sitter/
+var/

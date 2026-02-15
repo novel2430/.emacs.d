@@ -7,7 +7,26 @@
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 
+;; ==== Temp File Location ====
+(defconst my/emacs-var-dir (locate-user-emacs-file "var/"))
+(make-directory my/emacs-var-dir t)
+(setq
+ ;; save-place / projects
+ save-place-file (expand-file-name "places" my/emacs-var-dir)
+ project-list-file (expand-file-name "projects" my/emacs-var-dir)
+ ;; history-ish
+ recentf-save-file (expand-file-name "recentf" my/emacs-var-dir)
+ savehist-file (expand-file-name "savehist" my/emacs-var-dir)
+ bookmark-default-file (expand-file-name "bookmarks" my/emacs-var-dir)
+ ;; url, tramp
+ url-configuration-directory (expand-file-name "url/" my/emacs-var-dir)
+ tramp-persistency-file-name (expand-file-name "tramp" my/emacs-var-dir)
+ ;; auto-save
+ auto-save-list-file-prefix (expand-file-name "auto-save-list/.saves-" my/emacs-var-dir))
+
 (save-place-mode 1)
+(savehist-mode 1)
+(recentf-mode 1)
 
 ;; ==== Set UI ====
 (menu-bar-mode -1)
@@ -25,7 +44,8 @@
                 eshell-mode-hook
                 shell-mode-hook
                 vterm-mode-hook
-                help-mode-hook))
+                help-mode-hook
+				xwidget-webkit-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; ==== fonts ====
@@ -70,3 +90,4 @@
                     :background "gray30")  ;; 想更亮就 gray40/gray50
 
 (require 'workspace)
+(require 'markdown-preview)
