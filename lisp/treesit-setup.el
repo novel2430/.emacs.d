@@ -18,6 +18,8 @@
     html
 	lua
 	vue
+	markdown
+	markdown-inline
   )
   "Tree-sitter languages to auto-install if missing.")
 
@@ -38,6 +40,8 @@
     (css        "https://github.com/tree-sitter/tree-sitter-css")
     (html       "https://github.com/tree-sitter/tree-sitter-html")
 	(vue        "https://github.com/ikatyang/tree-sitter-vue")
+	(markdown   "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown/src")
+	(markdown-inline "https://github.com/tree-sitter-grammars/tree-sitter-markdown" "split_parser" "tree-sitter-markdown-inline/src")
     (lua        "https://github.com/tree-sitter-grammars/tree-sitter-lua"))
   "Tree-sitter grammar sources. See `treesit-language-source-alist` for the schema.")
 

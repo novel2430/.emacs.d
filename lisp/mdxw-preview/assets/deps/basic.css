@@ -1,0 +1,16 @@
+.dark-mode {
+  background-color: #1e1e1e;
+}
+.preview {
+  background-color: white;
+  color: black;
+}
+.preview.dark-mode {
+  background-color: #1e1e1e;
+  color: #c9d1d9;
+  border-color: #444;
+}
+.preview.dark-mode pre {
+  background-color: #2d2d2d;
+  border-color: #555;
+}

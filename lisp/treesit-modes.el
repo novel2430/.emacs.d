@@ -64,5 +64,11 @@
 (when (fboundp 'tsx-ts-mode)
   (add-to-list 'auto-mode-alist '("\\.tsx\\'" . tsx-ts-mode)))
 
+;; Markdown
+(use-package markdown-ts-mode
+  :ensure t
+  :mode ("\\.md\\'" . markdown-ts-mode)
+  :defer 't)
+
 (provide 'treesit-modes)
 ;;; treesit-modes.el ends here

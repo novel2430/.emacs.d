@@ -44,7 +44,8 @@
                 eshell-mode-hook
                 shell-mode-hook
                 vterm-mode-hook
-                help-mode-hook))
+                help-mode-hook
+				xwidget-webkit-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; ==== fonts ====
@@ -89,3 +90,4 @@
                     :background "gray30")  ;; 想更亮就 gray40/gray50
 
 (require 'workspace)
+(require 'markdown-preview)
