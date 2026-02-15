@@ -1,14 +1,8 @@
 ;;; treesit-modes.el --- choose major modes (ts-mode first) -*- lexical-binding: t; -*-
 
 ;; Vue
-(use-package web-mode
-  :ensure t
-  :mode ("\\.vue\\'" . web-mode))
-;;  :config
-  ;; 常见：缩进 2
-;;  (setq web-mode-markup-indent-offset 2
-;;        web-mode-code-indent-offset 2
-;;        web-mode-css-indent-offset 2))
+(require 'vue-ts-mode nil t)
+(add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-ts-mode))
 
 ;; HTML: prefer built-in html-ts-mode (Emacs 30.1+),
 ;; otherwise use vendored lisp/html-ts-mode.el, fallback to html-mode.

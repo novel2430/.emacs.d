@@ -67,7 +67,7 @@
   
   ;; Vue TS JS TSX
   (add-to-list 'eglot-server-programs
-             `((web-mode :language-id "vue"
+             `((vue-ts-mode :language-id "vue"
                 tsx-ts-mode :language-id "typescriptreact"
                 ts-ts-mode  :language-id "typescript"
                 js-ts-mode  :language-id "javascript")

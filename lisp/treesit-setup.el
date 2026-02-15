@@ -17,6 +17,7 @@
     css
     html
 	lua
+	vue
   )
   "Tree-sitter languages to auto-install if missing.")
 
@@ -36,6 +37,7 @@
     (c-sharp    "https://github.com/tree-sitter/tree-sitter-c-sharp")
     (css        "https://github.com/tree-sitter/tree-sitter-css")
     (html       "https://github.com/tree-sitter/tree-sitter-html")
+	(vue        "https://github.com/ikatyang/tree-sitter-vue")
     (lua        "https://github.com/tree-sitter-grammars/tree-sitter-lua"))
   "Tree-sitter grammar sources. See `treesit-language-source-alist` for the schema.")
 

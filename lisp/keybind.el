@@ -4,6 +4,7 @@
           (lambda ()
             (local-set-key (kbd "C-c u") #'eval-buffer)))
 
+
 ;; ==== Visual Selecting ====
 (global-set-key (kbd "M-v") #'set-mark-command)
 (defun my/visual-line ()
@@ -52,12 +53,17 @@ If region active: expand selection to whole lines, regardless of direction."
   (newline)
   (forward-line -1)
   (indent-according-to-mode))
+
 (defun my/delete-region-if-active ()
-  "Delete active region without saving to kill-ring."
+  "If region is active, delete it without saving to kill-ring.
+Otherwise, kill the next word (like `kill-word`)."
   (interactive)
-  (when (region-active-p)
-    (delete-region (region-beginning) (region-end))
-    (deactivate-mark)))
+  (if (use-region-p)
+      (progn
+        (delete-region (region-beginning) (region-end))
+        (deactivate-mark))
+    (kill-word 1)))
+
 (global-set-key (kbd "M-o") #'my/vim-o-below)
 (global-set-key (kbd "M-p") #'my/vim-O-above)
 (global-set-key (kbd "M-d") #'my/delete-region-if-active)
@@ -132,36 +138,6 @@ END is at beginning of line after the last selected line."
   (indent-rigidly beg end -2)  ;; change 2 -> 4 if you want
   (setq deactivate-mark nil))
 
-(defun my/move-selected-lines (n)
-  "Move selected lines by N lines, reindent, keep selection."
-  (interactive)
-  (unless (use-region-p)
-    (user-error "No active region"))
-  (let* ((bnds (my/region-line-bounds))
-         (beg  (car bnds))
-         (end  (cdr bnds))
-         (text (delete-and-extract-region beg end)))
-    (goto-char beg)
-    (forward-line n)
-    (let ((new-beg (point)))
-      (insert text)
-      (let ((new-end (point)))
-        ;; Reindent moved block
-        (indent-region new-beg new-end)
-        ;; Keep selection (like gv)
-        (set-mark new-beg)
-        (goto-char new-end)
-        (setq deactivate-mark nil)
-        (activate-mark)))))
-
-(defun my/move-selected-lines-down ()
-  (interactive)
-  (my/move-selected-lines 1))
-
-(defun my/move-selected-lines-up ()
-  (interactive)
-  (my/move-selected-lines -1))
-
 (defun my/visual-line-enter-block-mode ()
   "Select current line (including newline) and enter `my/visual-block-mode'."
   (interactive)
@@ -180,8 +156,6 @@ END is at beginning of line after the last selected line."
   (deactivate-mark))
 
 ;; Bind keys inside the small mode
-(define-key my/visual-block-mode-map (kbd "j") #'my/move-selected-lines-down)
-(define-key my/visual-block-mode-map (kbd "k") #'my/move-selected-lines-up)
 (define-key my/visual-block-mode-map (kbd "<") #'my/indent-region-left)
 (define-key my/visual-block-mode-map (kbd ">") #'my/indent-region-right)
 (define-key my/visual-block-mode-map (kbd "q") #'my/visual-block-mode-quit)
