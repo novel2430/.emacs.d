@@ -6,13 +6,23 @@
 
 ;; HTML: prefer built-in html-ts-mode (Emacs 30.1+),
 ;; otherwise use vendored lisp/html-ts-mode.el, fallback to html-mode.
-(cond
- ((fboundp 'html-ts-mode)
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . html-ts-mode)))
- ((require 'html-ts-mode nil t)
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . html-ts-mode)))
- (t
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . html-mode))))
+;;(cond
+;; ((fboundp 'html-ts-mode)
+;;  (add-to-list 'auto-mode-alist '("\\.html?\\'" . html-ts-mode)))
+;; ((require 'html-ts-mode nil t)
+;;  (add-to-list 'auto-mode-alist '("\\.html?\\'" . html-ts-mode)))
+;; (t
+;;  (add-to-list 'auto-mode-alist '("\\.html?\\'" . html-mode))))
+
+(use-package web-mode
+  :ensure t
+  :mode ("\\.html\\'")
+  :config
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-enable-current-element-highlight t)) ; highlights the current tag
+
 
 
 ;; Python: prefer python-ts-mode when grammar is available
