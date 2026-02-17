@@ -45,13 +45,14 @@
                 shell-mode-hook
                 vterm-mode-hook
                 help-mode-hook
+				pdf-view-mode-hook
 				xwidget-webkit-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; ==== fonts ====
 (set-face-attribute 'default nil
                     :family "Hack Nerd Font"
-                    :height 160)
+                    :height 180)
 (setq-default line-spacing 0.12)
 
 ;; ==== Alpha ====
@@ -92,3 +93,4 @@
 (require 'workspace)
 (require 'markdown-preview)
 (require 'comment-setup)
+(require 'pdf-tools-setup)
