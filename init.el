@@ -52,7 +52,7 @@
 ;; ==== fonts ====
 (set-face-attribute 'default nil
                     :family "Hack Nerd Font"
-                    :height 180)
+                    :height 160)
 (setq-default line-spacing 0.12)
 
 ;; ==== Alpha ====
