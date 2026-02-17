@@ -5,8 +5,11 @@
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-ts-mode))
 
 ;; HTML
-(require 'html-ts-mode)
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . html-ts-mode))
+(use-package web-mode
+  :ensure t
+  :mode ("\\.html\\'"))
+;; (require 'html-ts-mode)
+;; (add-to-list 'auto-mode-alist '("\\.html?\\'" . html-ts-mode))
 
 ;; Python: prefer python-ts-mode when grammar is available
 (when (and (fboundp 'python-ts-mode)

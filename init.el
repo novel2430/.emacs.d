@@ -91,3 +91,4 @@
 
 (require 'workspace)
 (require 'markdown-preview)
+(require 'comment-setup)

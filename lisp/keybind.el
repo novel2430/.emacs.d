@@ -104,6 +104,7 @@ Otherwise, kill the next word (like `kill-word`)."
 
 ;; Move Visual Line Block
 ;;; --- Visual line + block edit mode (jk<> move/indent while staying active) ---
+(use-package move-dup :ensure t)
 
 (defvar my/visual-block-mode-map (make-sparse-keymap)
   "Keymap for `my/visual-block-mode'.")
@@ -160,7 +161,13 @@ END is at beginning of line after the last selected line."
 (define-key my/visual-block-mode-map (kbd ">") #'my/indent-region-right)
 (define-key my/visual-block-mode-map (kbd "q") #'my/visual-block-mode-quit)
 (define-key my/visual-block-mode-map (kbd "<escape>") #'my/visual-block-mode-quit)
-  
+;; Move selected region (or current line) up/down
+(define-key my/visual-block-mode-map (kbd "k")   #'move-dup-move-lines-up)
+(define-key my/visual-block-mode-map (kbd "j") #'move-dup-move-lines-down)
+;; Duplicate selected region (or current line) up/down
+(define-key my/visual-block-mode-map (kbd "M-k")   #'move-dup-duplicate-up)
+(define-key my/visual-block-mode-map (kbd "M-j") #'move-dup-duplicate-down)
+
 ;; Entry key
 (global-set-key (kbd "C-c m") #'my/visual-line-enter-block-mode)
 
