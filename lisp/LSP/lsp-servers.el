@@ -1,5 +1,4 @@
 ;;; lsp-servers.el --- eglot servers -*- lexical-binding: t; -*-
-
 (require 'eglot)
 
 (defun my-vue-ts-plugin-path ()

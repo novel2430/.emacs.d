@@ -1,4 +1,4 @@
-;;; lsp-completion.el --- corfu completion UI -*- lexical-binding: t; -*-
+;;; curfu-setup.el --- corfu completion UI -*- lexical-binding: t; -*-
 
 ;; Corfu: completion popup for code buffers (CAPF)
 (use-package corfu
@@ -46,5 +46,6 @@
   :config
   (corfu-terminal-mode 1))
 
-(provide 'lsp-completion)
-;;; lsp-completion.el ends here
+(provide 'corfu-setup)
+;;; corfu-setup.el ends here
+

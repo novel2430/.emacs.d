@@ -1,5 +1,5 @@
 ;;; markdown-preview.el --- xxx -*- lexical-binding: t; -*-
-(add-to-list 'load-path "~/.emacs.d/lisp/mdxw-preview")
+(add-to-list 'load-path "~/.emacs.d/lisp/plugins/mdxw-preview")
 (require 'mdxw-preview)
 ;; 例：自訂位置與 debounce
 (setq mdxw-preview-side 'right
@@ -13,4 +13,4 @@
     (define-key markdown-ts-mode-map (kbd "C-c m r") #'mdxw-preview-render-current)
     (define-key markdown-ts-mode-map (kbd "C-c m d") #'mdxw-preview-close)))
 
-(provide 'markdown-preview)
+(provide 'markdown-preview-setup)

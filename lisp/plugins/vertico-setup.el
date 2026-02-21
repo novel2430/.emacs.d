@@ -1,4 +1,4 @@
-;;; completion-setup.el --- minibuffer cycle keys (M-j/M-k) -*- lexical-binding: t; -*-
+;;; vertico-setup.el --- minibuffer cycle keys (M-j/M-k) -*- lexical-binding: t; -*-
 ;; --- Minibuffer UI: Vertico ---
 (use-package vertico
   :ensure t
@@ -23,5 +23,5 @@
   (define-key vertico-map (kbd "M-j") #'vertico-next)
   (define-key vertico-map (kbd "M-k") #'vertico-previous))
 
-(provide 'completion-setup)
-;;; completion-setup.el ends here
+(provide 'vertico-setup)
+;;; vertico-setup.el ends here
