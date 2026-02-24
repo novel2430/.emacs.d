@@ -27,6 +27,7 @@
 (save-place-mode 1)
 (savehist-mode 1)
 (recentf-mode 1)
+(setq create-lockfiles nil)
 
 ;; ==== Set UI ====
 (menu-bar-mode -1)
