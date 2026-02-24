@@ -11,6 +11,7 @@
   (with-eval-after-load 'markdown-ts-mode
     (define-key markdown-ts-mode-map (kbd "C-c m t") #'mdxw-preview-toggle)
     (define-key markdown-ts-mode-map (kbd "C-c m r") #'mdxw-preview-render-current)
-    (define-key markdown-ts-mode-map (kbd "C-c m d") #'mdxw-preview-close)))
+    (define-key markdown-ts-mode-map (kbd "C-c m d") #'mdxw-preview-close)
+	(define-key markdown-ts-mode-map (kbd "C-c m m") #'my/visual-line-enter-block-mode)))
 
 (provide 'markdown-preview-setup)
